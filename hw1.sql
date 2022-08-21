@@ -28,7 +28,8 @@ select Name from city where CountryCode in ('AUS','RUS');
 select Name from city where CountryCode = 'AUS' or CountryCode = 'RUS';
 
 -- 10.	узнать все города, которые НЕ находятся в Китае из таблицы city. Не нашел страну Китай. )
- select Name, District from city where Not District = 'England';   
+ select Name from city where Not District = 'England';
+ -- select Name from city where Not CountryCode = 'CHN';   может быть так, но там нет страны с кодом CHN 
 
 -- 11.	узнать данные, где язык = Английский или код страны НЕ “CAN” и процент говорящих НИ меньше 50 из таблицы countrylanguage 
 select * from countrylanguage where Language = 'English' OR Not (CountryCode = 'Can' and percentage <= 50);
