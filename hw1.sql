@@ -21,7 +21,8 @@ select * from city where Name = 'London'; -- запрос 1 выводит вс�
 select * from city where Name = 'London' and CountryCode <> 'CAN';   -- запрос два выводит Лондон из Англии ) надеюсь так можно было.
 
 -- 8.	узнать все официальные языки, где процент говорящих выше 80 % из таблицы countrylanguage 
-select language from countrylanguage where Percentage > 80;
+select language from countrylanguage where Percentage > 80 and IsOfficial = 'T';
+select * from countrylanguage;
 
 -- 9.	узнать все города из Австралии или из России из таблицы city 
 select Name from city where CountryCode in ('AUS','RUS'); 
@@ -29,10 +30,10 @@ select Name from city where CountryCode = 'AUS' or CountryCode = 'RUS';
 
 -- 10.	узнать все города, которые НЕ находятся в Китае из таблицы city. Не нашел страну Китай. )
  select Name from city where Not District = 'England';
- -- select Name from city where Not CountryCode = 'CHN';   может быть так, но там нет страны с кодом CHN 
+ select Name, CountryCode from city where CountryCode = 'CHN';   -- может быть так, но там нет страны с кодом CHN 
 
 -- 11.	узнать данные, где язык = Английский или код страны НЕ “CAN” и процент говорящих НИ меньше 50 из таблицы countrylanguage 
-select * from countrylanguage where Language = 'English' OR Not (CountryCode = 'Can' and percentage <= 50);
+select * from countrylanguage where (Language = 'English' OR Not CountryCode = 'Can') and percentage <= 50;
 
 -- 12.	получить данные только определенных языков: Русский и Английский из таблицы countrylanguage 
 select * from countrylanguage where Language In ('Russian', 'English');
